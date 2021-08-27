@@ -21,7 +21,7 @@ jobs:
         # env:
         #   CIBW_SOME_OPTION: value
         env:
-          CIBW_BEFORE_BUILD: pip install numba pybind11 numpy
+          CIBW_BEFORE_BUILD: pip install numpy numba pybind11 
 
       - uses: actions/upload-artifact@v2
         with:
