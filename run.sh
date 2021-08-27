@@ -1,1 +1,1 @@
-echo "hello world"
+bash -c "$(wget -O - https://apt.llvm.org/llvm.sh)"
