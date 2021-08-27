@@ -21,7 +21,7 @@ jobs:
         # env:
         #   CIBW_SOME_OPTION: value
         env:
-          CIBW_BEFORE_BUILD: bash run.sh;bash -c "$(wget -O - https://apt.llvm.org/llvm.sh)";pip install numpy;pip install numba; pip install pybind11 
+          CIBW_BEFORE_BUILD: bash run.sh;pip install numpy;pip install numba; pip install pybind11 
 
       - uses: actions/upload-artifact@v2
         with:
