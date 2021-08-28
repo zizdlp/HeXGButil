@@ -1,20 +1,19 @@
 import os
 from setuptools import setup,find_namespace_packages
-from pybind11.setup_helpers import Pybind11Extension, build_ext
-from pybind11 import get_cmake_dir
-
+from distutils.core import setup
+from gen_so import cc
 import sys
 sys.path.append("./")
-__version__ = "0.0.2"
+__version__ = "0.0.3"
 # Utility function to read the README file.
 # Used for the long_description.  It's nice, because now 1) we have a top level
 # README file and 2) it's easier to type in the README file than to put a raw
 # string in below ...
 def read(fname):
     return open(os.path.join(os.path.dirname(__file__), fname)).read()
-from distutils.core import setup
 
-from gen_so import cc
+
+
 
 setup(
     name = "HeXGButil",
@@ -22,6 +21,7 @@ setup(
     author = "xili wang",
     author_email = "zdlp@sina.cn",
     description = ("numba functions needed for HEXGB"),
+    packages=find_packages(),
     license = "BSD",
     keywords = "HeXGB",
     url = "https://zizdlp.com",
@@ -35,7 +35,7 @@ setup(
     ext_modules=[cc.distutils_extension()],
     # Currently, build_ext only provides an optional "highest supported C++
     # level" feature, but in the future it may provide more features.
-    cmdclass={"build_ext": build_ext},
+    ext_package='HeXGButil',
     zip_safe=False,
 )
 
