@@ -1,6 +1,6 @@
 from numba.pycc import CC
 import numpy as np
-cc = CC('numba_so')
+cc = CC('HeXGButil')
 # Uncomment the following line to print out the compilation steps
 #cc.verbose = True
 
