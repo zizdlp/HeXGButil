@@ -3,6 +3,7 @@ name: Build
 on: [push, pull_request]
 
 jobs:
+
   build_wheels:
     name: Build wheels on ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
@@ -11,21 +12,25 @@ jobs:
         os: [ubuntu-20.04, windows-2019, macos-10.15]
 
     steps:
-
       - uses: actions/checkout@v2
-      
+
+      - uses: actions/setup-python@v2
+        name: Install Python
+        with:
+          python-version: '3.8'
 
       - name: Build wheels
         uses: pypa/cibuildwheel@v2.1.1
-        # to supply options, put them in 'env', like:
-        # env:
-        #   CIBW_SOME_OPTION: value
         env:
           CIBW_BEFORE_BUILD: pip install numba; pip install pybind11 
 
       - uses: actions/upload-artifact@v2
         with:
           path: ./wheelhouse/*.whl
+
+
+
+
   upload_pypi:
     needs: [build_wheels]
     runs-on: ubuntu-latest
