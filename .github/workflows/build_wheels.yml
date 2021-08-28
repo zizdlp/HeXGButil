@@ -18,8 +18,7 @@ jobs:
 
       - name: Build wheels
         uses: pypa/cibuildwheel@v2.1.1
-        env:
-          CIBW_BEFORE_BUILD: pip install numba; pip install pybind11 
+
 
       - uses: actions/upload-artifact@v2
         with:
