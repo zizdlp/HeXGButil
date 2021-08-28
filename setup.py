@@ -1,6 +1,6 @@
 import os
-from setuptools import setup,find_namespace_packages
-from distutils.core import setup
+
+from setuptools import setup, find_packages
 
 import sys
 sys.path.append("./")
