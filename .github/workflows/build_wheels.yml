@@ -16,7 +16,7 @@ jobs:
         os: [ubuntu-latest]
         python: [37, 38, 39]
         bitness: [64]
-        manylinux_image: [manylinux2010]
+        manylinux_image: [manylinux2014]
         include:
           # Run 32 and 64 bit version in parallel for Linux and Windows
 
