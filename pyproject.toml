@@ -1,0 +1,8 @@
+[build-system]
+# Minimum requirements for the build system to execute.
+requires = [
+    "setuptools",
+    "wheel",
+    "Cython>=0.28.5",
+    "numpy>=1.14.6;
+]
