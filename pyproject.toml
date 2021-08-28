@@ -1,10 +1,9 @@
+[project]
+requires-python = ">=3.6"
+
+# Aside - in pyproject.toml you should always specify minimal build
+# system options, like this:
+
 [build-system]
-# Minimum requirements for the build system to execute.
-requires = [
-    "setuptools",
-    "wheel",
-    "Cython>=0.28.5",
-    "numpy>=1.14.6",
-    "numba",
-    "pybind11",
-]
+requires = ["setuptools>=42", "wheel","numpy","numba","pybind11"]
+build-backend = "setuptools.build_meta"
