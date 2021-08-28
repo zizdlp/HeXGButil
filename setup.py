@@ -4,7 +4,7 @@ from pybind11.setup_helpers import Pybind11Extension, build_ext
 from pybind11 import get_cmake_dir
 
 import sys
-
+sys.path.append("./")
 __version__ = "0.0.1"
 # Utility function to read the README file.
 # Used for the long_description.  It's nice, because now 1) we have a top level
