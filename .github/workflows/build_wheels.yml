@@ -8,10 +8,21 @@ jobs:
     name: Build wheels on ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
     strategy:
+      fail-fast: false
       matrix:
         #### windows-2019, macos-10.15
-        os: [ubuntu-latest]
+        #os: [ubuntu-latest]
 
+        os: [ubuntu-latest]
+        python: [37, 38, 39]
+        bitness: [64]
+        manylinux_image: [manylinux2010]
+        include:
+          # Run 32 and 64 bit version in parallel for Linux and Windows
+
+          - os: ubuntu-latest
+            bitness: 64
+            platform_id: manylinux_x86_64
     steps:
       - uses: actions/checkout@v2
 
@@ -20,7 +31,9 @@ jobs:
       - name: Build wheels
         uses: pypa/cibuildwheel@v2.1.1
         env:
-          CIBW_BUILD: cp36-* cp37-* cp38-* cp39-*
+          #CIBW_BUILD: cp36-* cp37-* cp38-* cp39-*
+          CIBW_BUILD: cp${{ matrix.python }}-${{ matrix.platform_id }}
+          CIBW_MANYLINUX_X86_64_IMAGE: ${{ matrix.manylinux_image }}
 
 
       - uses: actions/upload-artifact@v2
