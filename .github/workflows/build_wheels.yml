@@ -32,7 +32,6 @@ jobs:
         uses: pypa/cibuildwheel@v2.1.1
         env:
           #CIBW_BUILD: cp36-* cp37-* cp38-* cp39-*
-          CIBW_BEFORE_BUILD: pip install numba 
           CIBW_BUILD: cp${{ matrix.python }}-${{ matrix.platform_id }}
           CIBW_MANYLINUX_X86_64_IMAGE: ${{ matrix.manylinux_image }}
 
