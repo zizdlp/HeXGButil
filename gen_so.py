@@ -116,8 +116,9 @@ def split4bin(n_samples, split_bins, discrete_x, insts, node_index_list):
 def forgrad(binss,ghs,split_bins,n_nodes,i):
     gh_sum = np.zeros((split_bins * n_nodes, 2),dtype=np.float32)
     for k in range(len(binss)):
-        gh_sum[binss[k,i]][0]+=ghs[k][0]
-        gh_sum[binss[k,i]][1]+=ghs[k][1]
+        if binss[k,i]>=0:
+            gh_sum[binss[k,i]][0]+=ghs[k][0]
+            gh_sum[binss[k,i]][1]+=ghs[k][1]
     return gh_sum   
 
 if __name__ == "__main__":
