@@ -29,9 +29,7 @@ jobs:
           - os: ubuntu-latest
             bitness: 32
             platform_id: manylinux_i686
-          - os: macos-latest
-            bitness: 64
-            platform_id: macosx_x86_64
+
         exclude:
           - os: macos-latest
             bitness: 32
