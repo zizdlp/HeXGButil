@@ -11,8 +11,8 @@ jobs:
       # Ensure that a wheel builder finishes even if another fails
       fail-fast: false
       matrix:
-        os: [windows-latest, ubuntu-latest]
-        python: [36,37, 38, 39]
+        os: [windows-latest, ubuntu-latest, macos-latest]
+        python: [36,37, 38]
         bitness: [32, 64]
         manylinux_image: [manylinux2014]
         include:
@@ -29,10 +29,12 @@ jobs:
           - os: ubuntu-latest
             bitness: 32
             platform_id: manylinux_i686
-
+          - os: macos-latest
+            bitness: 64
+            platform_id: macos_x86_64
         exclude:
           - os: macos-latest
-            bitness: 32
+            bitness: 32            
           # Remove manylinux1 from the windows and osx build matrix since
           # manylinux_image is not used for these platforms
 
@@ -43,7 +45,7 @@ jobs:
       - name: Build wheels
         uses: pypa/cibuildwheel@v2.1.1
         env:
-          #CIBW_BUILD: cp37-* cp38-* cp39-*
+          #CIBW_BUILD: cp36-* cp37-* cp38-* 
 
           CIBW_MANYLINUX_I686_IMAGE: ${{ matrix.manylinux_image }}
           CIBW_BUILD: cp${{ matrix.python }}-${{ matrix.platform_id }}
