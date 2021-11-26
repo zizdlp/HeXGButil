@@ -6,7 +6,7 @@ import sys
 sys.path.append("./")
 
 from gen_so import cc
-__version__ = "0.0.6"
+__version__ = "0.0.7"
 # Utility function to read the README file.
 # Used for the long_description.  It's nice, because now 1) we have a top level
 # README file and 2) it's easier to type in the README file than to put a raw
