@@ -5,5 +5,19 @@ requires-python = ">=3.6"
 # system options, like this:
 
 [build-system]
-requires = ["setuptools>=42", "wheel","numpy==1.19","pybind11","numba"]
+requires = [
+    "setuptools>=42",
+    "wheel",
+    # use oldest-supported-numpy which provides the oldest numpy version with
+    # wheels on PyPI
+    #
+    # see: https://github.com/scipy/oldest-supported-numpy/blob/master/setup.cfg
+    "oldest-supported-numpy; python_version!='3.7' or platform_machine=='aarch64' or platform_system=='AIX' or platform_python_implementation == 'PyPy'",
+
+    # Override oldest-supported-numpy setting because pandas 0.25.0 requires 1.14.6
+    "numpy==1.14.6; python_version=='3.7' and platform_machine!='aarch64' and platform_system!='AIX' and platform_python_implementation != 'PyPy'",
+
+    "pybind11",
+    "numba"
+]
 build-backend = "setuptools.build_meta"
