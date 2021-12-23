@@ -27,9 +27,6 @@ jobs:
             bitness: 64
             platform_id: manylinux_x86_64
           - os: ubuntu-latest
-            bitness: 64
-            platform_id: manylinux_aarch64
-          - os: ubuntu-latest
             bitness: 32
             platform_id: manylinux_i686
           - os: macos-latest
@@ -53,7 +50,7 @@ jobs:
           CIBW_MANYLINUX_I686_IMAGE: ${{ matrix.manylinux_image }}
           CIBW_BUILD: cp${{ matrix.python }}-${{ matrix.platform_id }}
           CIBW_MANYLINUX_X86_64_IMAGE: ${{ matrix.manylinux_image }}
-
+          CIBW_ARCHS_LINUX: "auto aarch64"
 
       - uses: actions/upload-artifact@v2
         with:
