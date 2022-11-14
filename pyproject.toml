@@ -5,5 +5,5 @@ requires-python = ">=3.6"
 # system options, like this:
 
 [build-system]
-requires = ["setuptools>=42", "wheel","numpy==1.19","pybind11","numba"]
+requires = ["setuptools>=42", "wheel","numpy>=1.19","numba"]
 build-backend = "setuptools.build_meta"
