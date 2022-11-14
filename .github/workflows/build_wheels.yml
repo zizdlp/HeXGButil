@@ -46,10 +46,10 @@ jobs:
         uses: pypa/cibuildwheel@v2.11.2
         env:
           #CIBW_BUILD: cp37-* cp38-* cp39-*
-          CIBW_BUILD: ${{ matrix.python }}-${{ matrix.platform_id }}
-          # CIBW_MANYLINUX_I686_IMAGE: ${{ matrix.manylinux_image }}
-          # CIBW_BUILD: cp${{ matrix.python }}-${{ matrix.platform_id }}
-          # CIBW_MANYLINUX_X86_64_IMAGE: ${{ matrix.manylinux_image }}
+          # CIBW_BUILD: ${{ matrix.python }}-${{ matrix.platform_id }}
+          CIBW_MANYLINUX_I686_IMAGE: ${{ matrix.manylinux_image }}
+          CIBW_BUILD: cp${{ matrix.python }}-${{ matrix.platform_id }}
+          CIBW_MANYLINUX_X86_64_IMAGE: ${{ matrix.manylinux_image }}
 
 
       - uses: actions/upload-artifact@v2
